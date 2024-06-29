@@ -15,10 +15,22 @@ fn main() {
         let stdin: Stdin = io::stdin();
         let mut input: String = String::new();
         stdin.read_line(&mut input).unwrap();
-        match input.trim() {
-            "ECHO" => println!("This is an ECHO."),
-            "LS" => println!("This is an LS."),
-            "MKDIR" => println!("This is a MKDIR."),
+        let input = input.trim();
+        let mut words: Vec<&str> = input.split_whitespace().collect();
+        match words[0] {
+            "ECHO" => {
+                words.remove(0);
+                for word in words {
+                    print!("{} ", word);
+                }
+                println!()
+            },
+            "LS" => {
+
+            },
+            "MKDIR" => {
+
+            },
             "EXIT" => process::exit(0),
             _ => println!("{} : command not found", input),
         }
